@@ -13,22 +13,19 @@ stop_btn.onclick = () => {
 //middleware
 const startBot = async () => {
   try {
-    const response = await fetch(
-      "https://twitterbot-production.up.railway.app/botpost",
-      {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-        },
-      }
-    ).then((response) => response.json());
+    const response = await fetch(`${window.location.href}botpost`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+    }).then((response) => response.json());
     console.log(response);
   } catch (e) {
     console.log(e.message);
   }
 };
 const stopBot = async () => {
-  await fetch("https://twitterbot-production.up.railway.app/stop")
+  await fetch(`${window.location.href}stop`)
     .then((res) => res.json())
     .then((data) => {
       console.log("data");
