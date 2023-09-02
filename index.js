@@ -144,14 +144,14 @@ const tweetGen = async (data) => {
 };
 
 const botPost = async (page,io) => {
-  console.log("\x1b[33m%s\x1b[0m", "[ROUTE]:/HOME");
-  io.emit("bot", "#[INFO] generating tweet");
-  const tweet = await tweetGen({ question: "write a very short sexy tweet" });
-  io.emit("bot", "#[INFO] LOGIN SUCCESSFUL");
-  console.log(tweet);
-  io.emit("bot", `#[TWEET] ${tweet}`);
-  const InputDiv = await page.$$(`.DraftEditor-editorContainer`);
   try {
+    console.log("\x1b[33m%s\x1b[0m", "[ROUTE]:/HOME");
+    io.emit("bot", "#[INFO] generating tweet");
+    const tweet = await tweetGen({ question: "write a very short sexy tweet" });
+    io.emit("bot", "#[INFO] LOGIN SUCCESSFUL");
+    console.log(tweet);
+    io.emit("bot", `#[TWEET] ${tweet}`);
+    const InputDiv = await page.$$(`.DraftEditor-editorContainer`);
     if (InputDiv.length > 0) {
       InputDiv[0].click();
       InputDiv[0].press("Backspace");
